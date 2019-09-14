@@ -16,7 +16,7 @@ def repNum(str):
 for filename in os.listdir(os.getcwd()+"/DATA"):
     if("jpg" in filename):
         print(filename)
-        
+
         document = open("Data/"+filename, 'rb')
         data = ocr.getOCR(document)
 
@@ -47,23 +47,22 @@ for filename in os.listdir(os.getcwd()+"/DATA"):
 
         newItems = []
         newPrices = []
-        avoid = ["tax", "total", "phone", "price", "discount", "amount", "amex", "change", ":"]
+        avoid = ["tax", "total", "phone", "price", "discount",
+            "amount", "amex", "visa", "change", ":"]
         for i in range(len(items)):
             skip = False
             for word in avoid:
                 if(word in items[i].lower()):
                     skip = True
 
-            if(items[i]==items[i-1]):
-                skip = True
-
             if(prices[i]>total):
                 skip = True
 
-            if(skip==False):
-                newItems.append(items[i].lstrip('0123456789.-X '))
+            if(not skip):
+                newItems.append(abbrev.complete(items[i].lstrip('0123456789.-X ')))
                 newPrices.append(prices[i])
 
         print(newItems)
         print(newPrices)
+        print(sum(newPrices)-total)
         total = sum(newPrices)
