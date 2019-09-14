@@ -4,6 +4,8 @@ import abbrev
 import os
 import sys
 
+import numpy as np
+
 def repNum(str):
     try:
         return float(str)
@@ -14,6 +16,7 @@ def repNum(str):
 for filename in os.listdir(os.getcwd()+"/DATA"):
     if("jpg" in filename):
         print(filename)
+        
         document = open("Data/"+filename, 'rb')
         data = ocr.getOCR(document)
 
@@ -28,7 +31,39 @@ for filename in os.listdir(os.getcwd()+"/DATA"):
                     print_next = True
 
         newTotals = []
-        for i in range(len(totals)):
-            newTotals.append(repNum(totals[i]))
+        for i in range(len(totals)): newTotals.append(repNum(totals[i]))
+        total = max(newTotals)
 
-        print(max(newTotals))
+        items = []
+        prices = []
+        prev = None
+        for item in data['Blocks']:
+            if item['BlockType'] == 'LINE':
+                if(repNum(item['Text'])>0):
+                    items.append(prev)
+                    prices.append(repNum(item['Text']))
+                elif(len(item['Text'])>3):
+                    prev = item['Text']
+
+        newItems = []
+        newPrices = []
+        avoid = ["tax", "total", "phone", "price", "discount", "amount", "amex", "change", ":"]
+        for i in range(len(items)):
+            skip = False
+            for word in avoid:
+                if(word in items[i].lower()):
+                    skip = True
+
+            if(items[i]==items[i-1]):
+                skip = True
+
+            if(prices[i]>total):
+                skip = True
+
+            if(skip==False):
+                newItems.append(items[i].lstrip('0123456789.-X '))
+                newPrices.append(prices[i])
+
+        print(newItems)
+        print(newPrices)
+        total = sum(newPrices)
