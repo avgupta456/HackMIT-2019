@@ -12,12 +12,4 @@ textract = boto3.client(
 # Use OCR to retrieve text
 def getOCR(document):
     imageBytes = bytearray(document.read())
-    response = textract.detect_document_text(Document={'Bytes': imageBytes})
-    for item in response['Blocks']:
-        if item['BlockType'] == 'LINE':
-            print(item['Text'])
-
-# Example
-documentName = "../../Costco_Redacted.jpg"
-document = open(documentName, 'rb')
-getOCR(document)
+    return textract.detect_document_text(Document={'Bytes': imageBytes})
