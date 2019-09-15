@@ -1766,7 +1766,7 @@ pre code {
 }
 
 .table .thead-light th {
-  color: #495057;
+  color: #FFFFFF;
   background-color: #e9ecef;
   border-color: #dee2e6;
 }
@@ -1862,7 +1862,7 @@ pre code {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #495057;
+  color: #FFFFFF;
   background-color: #fff;
   background-clip: padding-box;
   border: 1px solid #ced4da;
@@ -1882,7 +1882,7 @@ pre code {
 }
 
 .form-control:focus {
-  color: #495057;
+  color: #FFFFFF;
   background-color: #fff;
   border-color: #80bdff;
   outline: 0;
@@ -1920,7 +1920,7 @@ pre code {
 }
 
 select.form-control:focus::-ms-value {
-  color: #495057;
+  color: #FFFFFF;
   background-color: #fff;
 }
 
@@ -3526,7 +3526,7 @@ input[type="button"].btn-block {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #495057;
+  color: #FFFFFF;
   text-align: center;
   white-space: nowrap;
   background-color: #e9ecef;
@@ -3759,7 +3759,7 @@ input[type="button"].btn-block {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #495057;
+  color: #FFFFFF;
   vertical-align: middle;
   background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") no-repeat right 0.75rem center/8px 10px;
   background-color: #fff;
@@ -3777,7 +3777,7 @@ input[type="button"].btn-block {
 }
 
 .custom-select:focus::-ms-value {
-  color: #495057;
+  color: #FFFFFF;
   background-color: #fff;
 }
 
@@ -3856,7 +3856,7 @@ input[type="button"].btn-block {
   padding: 0.375rem 0.75rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #495057;
+  color: #FFFFFF;
   background-color: #fff;
   border: 1px solid #ced4da;
   border-radius: 0.25rem;
@@ -3872,7 +3872,7 @@ input[type="button"].btn-block {
   height: calc(1.5em + 0.75rem);
   padding: 0.375rem 0.75rem;
   line-height: 1.5;
-  color: #495057;
+  color: #FFFFFF;
   content: "Browse";
   background-color: #e9ecef;
   border-left: inherit;
@@ -4101,7 +4101,7 @@ input[type="button"].btn-block {
 
 .nav-tabs .nav-link.active,
 .nav-tabs .nav-item.show .nav-link {
-  color: #495057;
+  color: #FFFFFF;
   background-color: #fff;
   border-color: #dee2e6 #dee2e6 #fff;
 }
@@ -5330,13 +5330,13 @@ a.badge-dark:focus, a.badge-dark.focus {
 
 .list-group-item-action {
   width: 100%;
-  color: #495057;
+  color: #FFFFFF;
   text-align: inherit;
 }
 
 .list-group-item-action:hover, .list-group-item-action:focus {
   z-index: 1;
-  color: #495057;
+  color: #FFFFFF;
   text-decoration: none;
   background-color: #f8f9fa;
 }
