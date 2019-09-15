@@ -14,7 +14,7 @@ def get_food_info(foods):
     #index 3 is the calories in one serving
 
     #change the healthy_value based on what you think the cal/g for healthiness is
-    healthy_value = 36
+    healthy_value = 30
 
     all_food = all_parsed_food.drop([0])
     #convert index 3 and 48 for int
