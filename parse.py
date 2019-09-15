@@ -12,15 +12,6 @@ def repNum(str):
         try: return float(str[1:])
         except ValueError: return -1
 
-
-for filename in os.listdir(os.getcwd()+"/DATA"):
-    if("jpg" in filename):
-        print(filename)
-
-        document = open("Data/"+filename, 'rb')
-        data = ocr.getOCR(document)
-
-
 def getItems(data):
     totals = []
     print_next = False
@@ -54,11 +45,9 @@ def getItems(data):
     for i in range(len(items)):
         skip = False
         for word in avoid:
-            if(word in items[i].lower()):
-                skip = True
+            if(word in items[i].lower()): skip = True
 
-        if(prices[i]>total):
-            skip = True
+        if(prices[i]>total): skip = True
 
         if(not skip):
             newItems.append(abbrev.complete(items[i].lstrip('0123456789.-X ')))
@@ -67,5 +56,7 @@ def getItems(data):
     print(newItems)
     print(newPrices)
     print(sum(newPrices)-total)
+    print()
+
     total = sum(newPrices)
-    return [newItems, newPrices]
+    return [newItems, newPrices, total]

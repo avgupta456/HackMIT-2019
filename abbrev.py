@@ -15,6 +15,3 @@ def complete(str):
         return dict[max]
     except KeyError:
         return str
-
-
-print(complete("testng"))

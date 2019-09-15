@@ -1,12 +1,31 @@
 import matplotlib as mpl
 import matplotlib.pyplot as plt
+
 import numpy as np
 import scipy as sci
 import pandas as pd
+
 from dataset_map import get_index
 from food_predict import get_food_info
 
-data = [['grapefruit juice'],[]]
-foods_index = get_index(data[0])
-food_data = get_food_info(foods_index)
-print(food_data)
+import abbrev
+import parse
+import ocr
+
+import os
+import sys
+
+for filename in os.listdir(os.getcwd()+"/DATA"):
+    if("jpg" in filename):
+        print(filename)
+        document = open("Data/"+filename, 'rb')
+        data = ocr.getOCR(document)
+        [items, prices, total] = parse.getItems(data)
+
+        for item, price in zip(items, prices):
+            print([item, price])
+            foods_index = get_index(item)
+            food_data = get_food_info(foods_index)
+            print(food_data)
+
+        print()

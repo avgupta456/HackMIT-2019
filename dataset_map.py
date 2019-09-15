@@ -10,10 +10,11 @@ def get_index(words):
     df = pd.DataFrame(dataset)
     names = df['Shrt_Desc']
     names = np.array(names)
- 
+
     best_answer_index = []
     for word in words:
-        answer = difflib.get_close_matches(word.upper(),names,10,.4)
+        answer = difflib.get_close_matches(word.upper(),names,10,.2)
+        print(answer[0])
         best_answer_index.append(int((np.where(names==answer[0])[0])))
 
     return best_answer_index
