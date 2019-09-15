@@ -16,14 +16,4 @@ def get_index(words):
         answer = difflib.get_close_matches(word.upper(),names,10,.2)
         best_answer_index.append(int((np.where(names==answer[0])[0])))
 
-        '''
-        best = 0
-        value = 0
-        for i in range(len(names)):
-            temp = difflib.SequenceMatcher(None, word.upper(), names[i]).ratio()
-            if(temp>value): [best, value] = [i, temp]
-
-        best_answer_index.append(best)
-        '''
-
     return best_answer_index

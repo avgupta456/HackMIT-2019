@@ -1,2 +1,0 @@
-key = AKIAIEIDDFWSYU42ERXA
-secret key = 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
