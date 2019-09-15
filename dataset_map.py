@@ -14,7 +14,6 @@ def get_index(words):
     best_answer_index = []
     for word in words:
         answer = difflib.get_close_matches(word.upper(),names,10,.2)
-        print(answer[0:3])
         best_answer_index.append(int((np.where(names==answer[0])[0])))
 
     return best_answer_index

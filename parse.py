@@ -53,10 +53,5 @@ def getItems(data):
             newItems.append(abbrev.complete(items[i].lstrip('0123456789.-X ')))
             newPrices.append(prices[i])
 
-    print(newItems)
-    print(newPrices)
-    print(sum(newPrices)-total)
-    print()
-
     total = sum(newPrices)
     return [newItems, newPrices, total]
