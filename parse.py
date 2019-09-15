@@ -1,4 +1,3 @@
-import ocr
 import abbrev
 
 import os
@@ -13,6 +12,7 @@ def repNum(str):
         try: return float(str[1:])
         except ValueError: return -1
 
+
 for filename in os.listdir(os.getcwd()+"/DATA"):
     if("jpg" in filename):
         print(filename)
@@ -20,49 +20,52 @@ for filename in os.listdir(os.getcwd()+"/DATA"):
         document = open("Data/"+filename, 'rb')
         data = ocr.getOCR(document)
 
-        totals = []
-        print_next = False
-        for item in data['Blocks']:
-            if item['BlockType'] == 'LINE':
-                if(print_next):
-                    totals.append(item['Text'])
-                    print_next = False
-                if("total" in item['Text'].lower()):
-                    print_next = True
 
-        newTotals = []
-        for i in range(len(totals)): newTotals.append(repNum(totals[i]))
-        total = max(newTotals)
+def getItems(data):
+    totals = []
+    print_next = False
+    for item in data['Blocks']:
+        if item['BlockType'] == 'LINE':
+            if(print_next):
+                totals.append(item['Text'])
+                print_next = False
+            if("total" in item['Text'].lower()):
+                print_next = True
 
-        items = []
-        prices = []
-        prev = None
-        for item in data['Blocks']:
-            if item['BlockType'] == 'LINE':
-                if(repNum(item['Text'])>0):
-                    items.append(prev)
-                    prices.append(repNum(item['Text']))
-                elif(len(item['Text'])>3):
-                    prev = item['Text']
+    newTotals = []
+    for i in range(len(totals)): newTotals.append(repNum(totals[i]))
+    total = max(newTotals)
 
-        newItems = []
-        newPrices = []
-        avoid = ["tax", "total", "phone", "price", "discount",
-            "amount", "amex", "visa", "change", ":"]
-        for i in range(len(items)):
-            skip = False
-            for word in avoid:
-                if(word in items[i].lower()):
-                    skip = True
+    items = []
+    prices = []
+    prev = None
+    for item in data['Blocks']:
+        if item['BlockType'] == 'LINE':
+            if(repNum(item['Text'])>0):
+                items.append(prev)
+                prices.append(repNum(item['Text']))
+            elif(len(item['Text'])>3):
+                prev = item['Text']
 
-            if(prices[i]>total):
+    newItems = []
+    newPrices = []
+    avoid = ["tax", "total", "phone", "price", "discount",
+        "amount", "amex", "visa", "change", ":"]
+    for i in range(len(items)):
+        skip = False
+        for word in avoid:
+            if(word in items[i].lower()):
                 skip = True
 
-            if(not skip):
-                newItems.append(abbrev.complete(items[i].lstrip('0123456789.-X ')))
-                newPrices.append(prices[i])
+        if(prices[i]>total):
+            skip = True
 
-        print(newItems)
-        print(newPrices)
-        print(sum(newPrices)-total)
-        total = sum(newPrices)
+        if(not skip):
+            newItems.append(abbrev.complete(items[i].lstrip('0123456789.-X ')))
+            newPrices.append(prices[i])
+
+    print(newItems)
+    print(newPrices)
+    print(sum(newPrices)-total)
+    total = sum(newPrices)
+    return [newItems, newPrices]
