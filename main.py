@@ -30,6 +30,7 @@ for filename in os.listdir(os.getcwd()+"/data_jpg"):
         healthy = food_data.loc[food_data['healthy'] == 'yes', 'price'].sum()
         unhealthy = food_data.loc[food_data['healthy'] == 'no', 'price'].sum()
 
+        print(food_data)
         print("Healthy: " + str(healthy))
         print("Unhealthy: " + str(unhealthy))
         print("Ratio: " + str(healthy/(healthy+unhealthy))[:4])
