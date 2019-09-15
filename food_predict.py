@@ -28,4 +28,5 @@ def get_food_info(foods):
     all_desired_details = healthiness_food.iloc[foods,:]
 
     #all_desired_details includes all important infromation desired from food
-    all_desired_details
+    return all_desired_details
+    
