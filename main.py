@@ -34,4 +34,5 @@ for filename in os.listdir(os.getcwd()+"/data_jpg"):
         print("Healthy: " + str(healthy))
         print("Unhealthy: " + str(unhealthy))
         print("Ratio: " + str(healthy/(healthy+unhealthy))[:4])
+        print("Amount Donated: " + str(healthy/10))
         print()
