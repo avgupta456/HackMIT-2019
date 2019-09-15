@@ -18,7 +18,7 @@ import sys
 for filename in os.listdir(os.getcwd()+"/DATA"):
     if("jpg" in filename):
         print(filename)
-        document = open("Data/"+filename, 'rb')
+        document = open("data_jpg/"+filename, 'rb')
         data = ocr.getOCR(document)
         [items, prices, total] = parse.getItems(data)
 
