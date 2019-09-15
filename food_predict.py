@@ -12,10 +12,10 @@ def get_food_info(foods):
 
     #index 48 is grams in one serving
     #index 3 is the calories in one serving
-    
+
     #change the healthy_value based on what you think the cal/g for healthiness is
-    healthy_value = 55
-    
+    healthy_value = 36
+
     all_food = all_parsed_food.drop([0])
     #convert index 3 and 48 for int
     all_food = all_food.astype({3: float, 48: float})
@@ -29,4 +29,3 @@ def get_food_info(foods):
 
     #all_desired_details includes all important infromation desired from food
     return all_desired_details
-    

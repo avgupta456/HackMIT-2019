@@ -24,6 +24,11 @@ for filename in os.listdir(os.getcwd()+"/DATA"):
 
         foods_index = get_index(items)
         food_data = get_food_info(foods_index)
+        food_data['price'] = np.array(prices)
+        #comment the below lines if you don't want healthy/unhealthy prices
+        food_data['healthy_price'] = food_data.loc[food_data['healthy'] == 'yes', 'price'].sum()
+        food_data['unhealthy_price'] = food_data.loc[food_data['healthy'] == 'no', 'price'].sum()
+        food_data['10_percent_unhealthy'] = food_data["unhealthy_price"]/10
         print(food_data)
 
         print()
