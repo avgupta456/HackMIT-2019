@@ -31,3 +31,11 @@
    margin-left: auto;
    margin-right: auto;
  }
+
+ .Mason {
+   width: 100%
+ }
+
+ .SmallMason {
+   width: 75%
+ }
