@@ -13,30 +13,24 @@ def repNum(str):
         except ValueError: return -1
 
 def getItems(data):
-    totals = []
-    print_next = False
-    for item in data['Blocks']:
-        if item['BlockType'] == 'LINE':
-            if(print_next):
-                totals.append(item['Text'])
-                print_next = False
-            if("total" in item['Text'].lower()):
-                print_next = True
-
-    newTotals = []
-    for i in range(len(totals)): newTotals.append(repNum(totals[i]))
-    total = max(newTotals)
-
     items = []
     prices = []
-    prev = None
-    for item in data['Blocks']:
-        if item['BlockType'] == 'LINE':
-            if(repNum(item['Text'])>0):
-                items.append(prev)
-                prices.append(repNum(item['Text']))
-            elif(len(item['Text'])>3):
-                prev = item['Text']
+
+    lines = data.readlines()
+    for line in lines:
+        if(line[-4]==46):
+            item = " ".join(str(line).split(" ")[0:-2]).strip().lstrip("'b \t")
+            price = str(line).split(" ")[-1].strip().rstrip("\\'\"n ").lstrip('$USD ')
+
+            items.append(item.lstrip("123456789 "))
+            prices.append(float(price.lstrip("T$")))
+
+    totals = []
+    for i in range(len(items)):
+        if ("total" in items[i].lower()):
+            totals.append(prices[i])
+
+    total = max(totals)
 
     newItems = []
     newPrices = []
@@ -49,8 +43,10 @@ def getItems(data):
 
         if(prices[i]>total): skip = True
 
+        if(items[i]==""): skip = True
+
         if(not skip):
-            newItems.append(abbrev.complete(items[i].lstrip('0123456789.-X ')))
+            newItems.append(items[i])
             newPrices.append(prices[i])
 
     total = sum(newPrices)

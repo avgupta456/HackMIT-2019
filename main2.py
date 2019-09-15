@@ -16,10 +16,9 @@ import os
 import sys
 
 for filename in os.listdir(os.getcwd()+"/data_csv"):
-    if("jpg" in filename):
+    if("csv" in filename):
         print(filename)
         data = open("data_csv/"+filename, 'rb')
-        print(data)
         [items, prices, total] = parse.getItems(data)
 
         foods_index = get_index(items)
@@ -30,6 +29,7 @@ for filename in os.listdir(os.getcwd()+"/data_csv"):
         healthy = food_data.loc[food_data['healthy'] == 'yes', 'price'].sum()
         unhealthy = food_data.loc[food_data['healthy'] == 'no', 'price'].sum()
 
+        print(food_data)
         print("Healthy: " + str(healthy))
         print("Unhealthy: " + str(unhealthy))
         print("Ratio: " + str(healthy/(healthy+unhealthy))[:4])
