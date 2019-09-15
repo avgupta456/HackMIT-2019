@@ -22,10 +22,8 @@ for filename in os.listdir(os.getcwd()+"/DATA"):
         data = ocr.getOCR(document)
         [items, prices, total] = parse.getItems(data)
 
-        for item, price in zip(items, prices):
-            print([item, price])
-            foods_index = get_index(item)
-            food_data = get_food_info(foods_index)
-            print(food_data)
+        foods_index = get_index(items)
+        food_data = get_food_info(foods_index)
+        print(food_data)
 
         print()
