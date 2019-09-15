@@ -31,8 +31,9 @@ for filename in os.listdir(os.getcwd()+"/data_jpg"):
         unhealthy = food_data.loc[food_data['healthy'] == 'no', 'price'].sum()
 
         print(food_data)
-        print("Healthy: " + str(healthy))
-        print("Unhealthy: " + str(unhealthy))
-        print("Ratio: " + str(healthy/(healthy+unhealthy))[:4])
-        print("Amount Donated: " + str(healthy/10))
+        print()
+        print("Healthy: $" + str(healthy))
+        print("Unhealthy: $" + str(unhealthy))
+        #print("Ratio: " + str(healthy/(healthy+unhealthy))[:4])
+        print("Amount Donated: $" + str(healthy/10)[:4])
         print()

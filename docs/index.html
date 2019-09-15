@@ -83,8 +83,8 @@
 
     <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="walkthrough">
       <div class="w-100">
-        <h2 class="mb-0">Project Walkthrough
-        </h2>
+        <h2 class="mb-0">Project Walkthrough</h2>
+        <p> </p>
         <p class="lead mb-5">The FlowChart below summarizes the main algorithms and languages used in developing Project Horus.</p>
         <img src="./img/flowchart.jpg", alt="Flow Chart" class="Mason">
         <hr class="m-4">
@@ -92,28 +92,48 @@
           <div class="column">
             <div class="subheading mb-3">Sample Input</div>
             <b class="mb-1">Receipt 1</b>
-            <p>
+            <p> </p>
             <img src="./img/sample.jpg", alt="Sample Receipt", class="SmallMason">
+            <p> </p>
+            <b class="mb-1">Receipt 2</b>
+            <p> </p>
+            <img src="./img/sample2.jpg", alt="Sample Receipt", class="SmallMason">
 
           </div>
           <div class="column">
-            <div class="subheading mb-3">Machine Learning Algorithms</div>
-            Test 1
-            <br>
-            <div class="subheading mb-3">Subfields</div>
-            Test 2
+            <div class="subheading mb-3">Step 1: Optical Character Recognition</div>
+            Optical Character Recognition allows our algorithm to read text directly from images, accounting for blur, rotation, smudges, wrinkles, and more. We experimented with two software platforms to perform OCR: Amazon Web Services (AWS) Textract and InstaBase OCR. Both had similar accuracy, and a combination of both algorithms was used. Our input for this step was the image of the receipt, and OCR outputted a JSON file.
+            <p> </p>
+            <br class="mb-4">
+            <div class="subheading mb-3">Step 2: Text Parsing + Augmentation</div>
+            Using Python 3.0 libraries (NumPy, Pandas, PyEnchant), we were able to parse out pairs of items and prices from the receipt JSON files, as well as the final expense from each transaction. As receipts have limited space, many words are truncated and abbreviated, so we focused on augmenting our data with an English dictionary spellcheck tool. Taking in the JSON file, this step created a 2D NumPy array of (item, price) pairs.
+            <p> </p>
+            <br class="mb-4">
+            <div class="subheading mb-3">Step 3: Text Classification</div>
+            Using (more) Python 3.0 libraries (NumPy, Pandas, DiffLab), we were able to cluster our parsed words into buckets defined by an online nutritional database. Each word is now associated with a plethora of information regarding calories, sugar, carbohydrates, and much, much more.
           </div>
         </div>
-      </div>
-    </section>
+        <p> </p> <p> </p>
+        <b class="mb-1">Step 4: Analytics on Nutrition Dataset</b>
+        <p> </p>
+        Using the nutirition dataset and the parsed text segmented into these clusters, we calculate for each item in the receipt, the 'healthiness' of the item, measured using a combination of calories, sugar, fat, saturates, and sodium.
+        <p> </p>
+        <b class="mb-1">Step 5: Receipt Health Score</b>
+        <p> </p>
+        Using a weighted average of the individual item 'healthiness' scores, multiplied by the price of each item, we find the Receipt Health Score. A segment of all advertisement profits proportional to the healthiness of the receipt is donated to a food bank or non-profit. In this way, we encourage our customers to eat healthy and contribute to their communities.
+
+        <p> </p> <p> </p>
+        <b class="mb-1">Sample Output for Fast Food Meal</b>
+        <h5></h5>
+        <img src="./img/table.png", alt="Flow Chart" class="Mason">
 
     <hr class="m-1">
 
-    <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="business">
+    <section class="resume-section p-3 p-lg-3 d-flex align-items-center" id="business">
       <div class="w-100">
-        <h2 class="mb-0">Business Overview
-        </h2>
-        <p class="lead mb-5">Multi-billion dollar potential</p>
+        <h2 class="mb-0">Business Overview</h2>
+        <p class="lead mb-5"></p>
+        Project Horus aims to use machine learning and natural language processing solutions to bring value to millions of consumers who struggle daily with monitoring their finances and making meaningful insight of their spending pattern.
       </div>
     </section>
 
@@ -121,9 +141,9 @@
 
     <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="software">
       <div class="w-100">
-        <h2 class="mb-0">Software
-        </h2>
-        <p class="lead mb-5">BOTH AWS and InstaTable</p>
+        <h2 class="mb-0">Software</h2>
+        <p class="lead mb-5"></p>
+
       </div>
     </section>
 
