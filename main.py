@@ -5,20 +5,20 @@ import numpy as np
 import scipy as sci
 import pandas as pd
 
-from dataset_map import get_index
-from food_predict import get_food_info
+from helper.dataset_map import get_index
+from helper.food_predict import get_food_info
 
-import abbrev
-import parse
-import ocr
+from helper import abbrev
+from helper import parse
+from helper import ocr
 
 import os
 import sys
 
-for filename in os.listdir(os.getcwd()+"/data_jpg"):
+for filename in os.listdir(os.getcwd()+"/data/data_jpg"):
     if("jpg" in filename):
         print(filename)
-        document = open("data_jpg/"+filename, 'rb')
+        document = open("data/data_jpg/"+filename, 'rb')
         data = ocr.getOCR(document)
         [items, prices, total] = parse.getItems(data)
 

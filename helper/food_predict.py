@@ -7,7 +7,7 @@ import csv
 
 def get_food_info(foods):
     #read food data
-    path_to_file = './ABBREV.csv'
+    path_to_file = './data/food_data.csv'
     all_parsed_food = pd.read_csv(path_to_file, delimiter=",", header = None)
 
     #index 48 is grams in one serving

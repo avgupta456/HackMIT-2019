@@ -6,7 +6,7 @@ import pandas as pd
 import difflib
 
 def get_index(words):
-    dataset = pd.read_csv("ABBREV.csv")
+    dataset = pd.read_csv("./data/food_data.csv")
     df = pd.DataFrame(dataset)
     names = df['Shrt_Desc']
     names = np.array(names)

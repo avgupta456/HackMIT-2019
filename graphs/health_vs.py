@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import scipy as sci
 import pandas as pd
+
 plt.style.use('ggplot')
 
 x=(1,2)

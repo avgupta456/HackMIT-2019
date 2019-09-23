@@ -5,20 +5,19 @@ import numpy as np
 import scipy as sci
 import pandas as pd
 
-from dataset_map import get_index
-from food_predict import get_food_info
+from helper.dataset_map import get_index
+from helper.food_predict import get_food_info
 
-import parse2 as parse
-import abbrev
-import ocr
+from helper import parse2 as parse
+from helper import abbrev
 
 import os
 import sys
 
-for filename in os.listdir(os.getcwd()+"/data_csv"):
+for filename in os.listdir(os.getcwd()+"/data/data_csv"):
     if("csv" in filename):
         print(filename)
-        data = open("data_csv/"+filename, 'rb')
+        data = open("data/data_csv/"+filename, 'rb')
         [items, prices, total] = parse.getItems(data)
 
         foods_index = get_index(items)
